@@ -28,11 +28,6 @@ header h1 {
   100% { transform: translateX(0%); }
 }
 
-nav {
-  display: flex;
-  flex-wrap: nowrap;
-}
-
 nav a {
   margin: 0 1.25rem;
   color: #ffffff;
@@ -175,7 +170,7 @@ nav a.active {
     width: 100%;
     flex-direction: column;
     align-items: center;
-    margin-top: 0.5rem;
+    margin-top: 1rem;
   }
 
   nav a {
