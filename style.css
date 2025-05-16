@@ -28,6 +28,11 @@ header h1 {
   100% { transform: translateX(0%); }
 }
 
+nav {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
 nav a {
   margin: 0 1.25rem;
   color: #ffffff;
@@ -136,7 +141,6 @@ nav a.active {
   animation: wave 2.25s infinite;
 }
 
-/* Responsive Design */
 @media (max-width: 1024px) {
   .container {
     padding: 1.5rem 2rem;
@@ -152,29 +156,33 @@ nav a.active {
     width: 15rem;
     height: 15rem;
   }
+
+  nav a {
+    margin: 0 1rem;
+    font-size: 1.1rem;
+  }
 }
 
 @media (max-width: 768px) {
   header {
-    padding: 1.5rem 2rem;
-    flex-direction: column;
+    padding: 1.5rem 1rem;
+    flex-direction: row;
     align-items: center;
   }
 
   header h1 {
     font-size: 1.75rem;
-    margin-bottom: 1rem;
+    margin-right: 1rem;
   }
 
   nav {
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 1rem;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: nowrap;
   }
 
   nav a {
-    margin: 0.5rem 0;
+    margin: 0 0.75rem;
     font-size: 1rem;
   }
 
@@ -209,20 +217,22 @@ nav a.active {
 
 @media (max-width: 480px) {
   header {
-    padding: 1rem 1rem;
+    padding: 1rem 0.5rem;
   }
 
   header h1 {
     font-size: 1.5rem;
+    margin-right: 0.5rem;
   }
 
   nav {
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: nowrap;
   }
 
   nav a {
-    margin: 0.25rem 0;
+    margin: 0 0.5rem;
     font-size: 0.9rem;
   }
 
