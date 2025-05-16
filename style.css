@@ -9,14 +9,14 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30px 60px;
+  padding: 2rem 4rem;
   background-color: #0d0d0d;
   animation: slideDownHeader 1s ease-out forwards;
 }
 
 header h1 {
   color: #f5d76e;
-  font-size: 32px;
+  font-size: 2rem;
   white-space: nowrap;
   overflow: hidden;
   transform: translateX(-100%);
@@ -29,11 +29,11 @@ header h1 {
 }
 
 nav a {
-  margin: 0 20px;
+  margin: 0 1.25rem;
   color: #ffffff;
   text-decoration: none;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 1.25rem;
   opacity: 0;
   transform: translateY(-20px);
   animation: slideDownNavItem 0.7s ease-out forwards;
@@ -64,33 +64,33 @@ nav a.active {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 60px 110px;
-  gap: 80px;
+  padding: 2rem 4rem;
+  gap: 2rem;
 }
 
 .text-section {
-  max-width: 600px;
+  max-width: 50%;
   text-align: center;
   opacity: 0;
-  transform: translateY(50px) translateX(-60px);
+  transform: translateY(50px) translateX(-5%);
   animation: slideUpContent 1s ease-out 0.6s forwards;
 }
 
 .text-section h2 {
   color: #f5d76e;
-  margin-bottom: 5px;
-  font-size: 25px;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
 }
 
 .text-section h1 {
-  font-size: 50px;
-  margin: 10px 0;
+  font-size: 3rem;
+  margin: 0.5rem 0;
   line-height: 1.2;
 }
 
 .text-section p {
-  font-size: 20px;
-  margin: 10px 0;
+  font-size: 1.25rem;
+  margin: 0.5rem 0;
   font-weight: 600;
 }
 
@@ -116,8 +116,8 @@ nav a.active {
   border: 4px solid #f5d76e;
   border-radius: 50%;
   overflow: hidden;
-  width: 300px;
-  height: 300px;
+  width: 18.75rem;
+  height: 18.75rem;
   box-shadow: 0 0 30px #f5d76e44;
   flex-shrink: 0;
   opacity: 0;
@@ -136,53 +136,111 @@ nav a.active {
   animation: wave 2.25s infinite;
 }
 
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .container {
+    padding: 1.5rem 2rem;
+    gap: 1.5rem;
+  }
+
+  .text-section {
+    max-width: 60%;
+    transform: translateY(50px) translateX(-3%);
+  }
+
+  .avatar {
+    width: 15rem;
+    height: 15rem;
+  }
+}
+
 @media (max-width: 768px) {
   header {
-    padding: 20px;
+    padding: 1.5rem 2rem;
     flex-direction: column;
     align-items: flex-start;
   }
 
   header h1 {
-    font-size: 28px;
-    margin-bottom: 10px;
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
   }
 
   nav {
     width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-top: 10px;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 1rem;
   }
 
   nav a {
-    margin: 10px 0;
-    font-size: 18px;
+    margin: 0 0.75rem;
+    font-size: 1rem;
   }
 
   .container {
-    padding: 40px;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 40px;
+    padding: 1.5rem 1rem;
+    gap: 1rem;
+  }
+
+  .text-section {
+    max-width: 100%;
+    transform: translateY(50px) translateX(0);
   }
 
   .text-section h2 {
-    font-size: 22px;
+    font-size: 1.25rem;
   }
 
   .text-section h1 {
-    font-size: 40px;
+    font-size: 2.5rem;
   }
 
   .text-section p {
-    font-size: 18px;
+    font-size: 1rem;
   }
 
   .avatar {
-    width: 200px;
-    height: 200px;
+    width: 12.5rem;
+    height: 12.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 1rem 1rem;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  nav a {
+    margin: 0 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .container {
+    padding: 1rem;
+    gap: 0.5rem;
+  }
+
+  .text-section h2 {
+    font-size: 1.1rem;
+  }
+
+  .text-section h1 {
+    font-size: 2rem;
+  }
+
+  .text-section p {
+    font-size: 0.9rem;
+  }
+
+  .avatar {
+    width: 10rem;
+    height: 10rem;
   }
 }
 
@@ -226,8 +284,8 @@ nav a.active {
 }
 
 @keyframes slideUpContent {
-  0% { transform: translateY(50px) translateX(-60px); opacity: 0; }
-  100% { transform: translateY(60px) translateX(-60px); opacity: 1; }
+  0% { transform: translateY(50px) translateX(-5%); opacity: 0; }
+  100% { transform: translateY(60px) translateX(-5%); opacity: 1; }
 }
 
 @keyframes slideUpAvatar {
