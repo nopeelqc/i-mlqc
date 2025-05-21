@@ -38,7 +38,7 @@ navLinks.forEach(link => {
 
 window.addEventListener('DOMContentLoaded', () => {
   const audio = document.querySelector('audio');
-  audio.volume = 0.5;
+  audio.volume = 0.8;
   const playAudio = () => {
     audio.play().catch(() => {});
     window.removeEventListener('click', playAudio);
