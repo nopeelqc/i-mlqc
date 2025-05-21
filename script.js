@@ -46,4 +46,20 @@ window.addEventListener('DOMContentLoaded', () => {
   };
   window.addEventListener('click', playAudio);
   window.addEventListener('keydown', playAudio);
+
+  const logo = document.getElementById('logo');
+  const goHomeMobile = document.getElementById('go-home-mobile');
+  const homeLink = document.querySelector('nav a[data-section="home"]');
+
+  if (logo && homeLink) {
+    logo.addEventListener('click', () => {
+      homeLink.click();
+    });
+  }
+
+  if (goHomeMobile && homeLink) {
+    goHomeMobile.addEventListener('click', () => {
+      homeLink.click();
+    });
+  }
 });
