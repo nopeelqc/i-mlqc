@@ -422,6 +422,10 @@ nav a.active {
   --text-color-dark: white;
   --bg-color-light: white;
   --text-color-light: #0d0d0d;
+  --toggle-bg-dark: #f5d76e;
+  --toggle-bg-light: #0d0d0d;
+  --toggle-handle-dark: white;
+  --toggle-handle-light: white;
 }
 
 body.light-mode {
@@ -451,26 +455,39 @@ body.light-mode header h1 {
   top: 1rem;
   right: 1rem;
   z-index: 1000;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  background-color: #f5d76e;
+  width: 3.5rem;
+  height: 2rem;
+  border-radius: 1rem;
+  background-color: var(--toggle-bg-dark);
   display: flex;
   align-items: center;
-  justify-content: center;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  padding: 0.25rem;
+  box-sizing: border-box;
 }
 
 #toggle-icon {
   width: 1.5rem;
   height: 1.5rem;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-color: var(--toggle-handle-dark);
+  border-radius: 50%;
   transition: transform 0.3s ease;
-  background-image: url('https://cdn-icons-png.flaticon.com/512/869/869869.png');
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+body.light-mode #theme-toggle {
+  background-color: var(--toggle-bg-light);
 }
 
 body.light-mode #toggle-icon {
-  background-image: url('image2.jpg');
+  transform: translateX(1.5rem);
+  background-color: var(--toggle-handle-light);
+}
+
+@media (max-width: 768px) {
+  #theme-toggle {
+    top: 0.75rem;
+    right: 0.75rem;
+  }
 }

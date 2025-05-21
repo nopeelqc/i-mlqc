@@ -38,7 +38,7 @@ navLinks.forEach(link => {
 
 window.addEventListener('DOMContentLoaded', () => {
   const audio = document.querySelector('audio');
-  audio.volume = 0;
+  audio.volume = 0.8;
   const playAudio = () => {
     audio.play().catch(() => {});
     window.removeEventListener('click', playAudio);
@@ -65,7 +65,6 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 const themeToggle = document.getElementById('theme-toggle');
-const toggleIcon = document.getElementById('toggle-icon');
 
 themeToggle.addEventListener('click', () => {
   document.body.classList.toggle('light-mode');
