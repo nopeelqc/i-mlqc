@@ -69,3 +69,20 @@ const themeToggle = document.getElementById('theme-toggle');
 themeToggle.addEventListener('click', () => {
   document.body.classList.toggle('light-mode');
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const skillTabs = document.querySelectorAll('.skill-tab');
+  const skillContents = document.querySelectorAll('.skill-content');
+  
+  skillTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const targetTab = tab.getAttribute('data-tab');
+    
+      skillTabs.forEach(t => t.classList.remove('active'));
+      skillContents.forEach(c => c.classList.remove('active'));
+      
+      tab.classList.add('active');
+      document.getElementById(targetTab).classList.add('active');
+    });
+  });
+});
