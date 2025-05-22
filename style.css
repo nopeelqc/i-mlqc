@@ -1,8 +1,8 @@
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background-color: #0d0d0d;
-  color: white;
+  background-color: white;
+  color: #0d0d0d;
 }
 
 header {
@@ -10,12 +10,12 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 2rem 4rem;
-  background-color: #0d0d0d;
+  background-color: white;
   animation: slideDownHeader 1s ease-out forwards;
 }
 
 header h1 {
-  color: #f5d76e;
+  color: #000000;
   font-size: 2rem;
   white-space: nowrap;
   overflow: hidden;
@@ -35,7 +35,7 @@ nav {
 
 nav a {
   margin: 0 1.25rem;
-  color: #f5d76e;
+  color: #000000;
   text-decoration: none;
   font-weight: 700;
   font-size: 1.25rem;
@@ -63,8 +63,8 @@ nav a:nth-child(4) {
 }
 
 nav a.active {
-  color: #f5d76e;
-  border-bottom: 4px solid #f5d76e;
+  color: #000000;
+  border-bottom: 3px solid #f5d76e;
 }
 
 .container {
@@ -81,9 +81,8 @@ nav a.active {
   text-align: center;
   opacity: 0;
   transform: translateY(50px) translateX(0%);
-  animation: slideUpContent 1s ease-out 0.6s forwards;
+  animation: slideUpContent 0.8s ease-out 0.2s forwards;
   margin-left: -30px;
-
 }
 
 .text-section h1 {
@@ -91,13 +90,13 @@ nav a.active {
   font-size: 3.8rem;
   font-weight: 700;
   letter-spacing: 2px;
-  color: #f5d76e;
+  color: #000000;
   margin: 0.5rem 0;
   line-height: 1.2;
 }
 
 .text-section h2 {
-  color: #f5d76e;
+  color: #000000;
   margin-bottom: 0.5rem;
   font-size: 1.5rem;
 }
@@ -109,34 +108,35 @@ nav a.active {
 }
 
 .highlight {
-  color: #f5d76e;
+  color: #972020;
 }
 
 .typing {
   display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
-  animation: typing 7s steps(25, end) infinite;
+  position: relative;
 }
 
-@keyframes typing {
-  0% { width: 0; }
-  45% { width: 100%; }
-  55% { width: 100%; }
-  100% { width: 0; }
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.welcome-text {
+  color: #d4af37 !important;
+  font-weight: 700;
 }
 
 .avatar {
-  border: 4px solid #f5d76e;
+  border: 4px solid #0d0d0d;
   border-radius: 50%;
   overflow: hidden;
   width: 18.75rem;
   height: 18.75rem;
-  box-shadow: 0 0 30px #f5d76e44;
+  box-shadow: 0 0 30px rgba(13, 13, 13, 0.3);
   flex-shrink: 0;
   opacity: 0;
   transform: translateY(50px);
-  animation: slideUpAvatar 1s ease-out 0.9s forwards;
+  animation: slideUpAvatar 0.8s ease-out 0.4s forwards;
   margin-left: 70px;
 }
 
@@ -278,20 +278,6 @@ nav a.active {
   100% { transform: translateY(0deg); }
 }
 
-.clap {
-  display: inline-block;
-  animation: clap 2.25s infinite;
-}
-
-@keyframes clap {
-  0% { transform: scale(1); }
-  20% { transform: scale(1.2) translateX(-5px); }
-  40% { transform: scale(1) translateX(5px); }
-  60% { transform: scale(1.2) translateX(-5px); }
-  80% { transform: scale(1) translateX(5px); }
-  100% { transform: scale(1); }
-}
-
 @keyframes slideUp {
   0% { transform: translateY(100px); opacity: 0; }
   100% { transform: translateY(30px); opacity: 1; }
@@ -358,7 +344,7 @@ nav a.active {
     position: fixed;
     left: 0;
     bottom: 0;
-    background: #0d0d0d;
+    background: white;
     padding: 0.75rem 0;
     border-top: 2px solid #f5d76e;
     z-index: 100;
@@ -418,36 +404,49 @@ nav a.active {
 }
 
 :root {
-  --bg-color-dark: #0d0d0d;
-  --text-color-dark: white;
   --bg-color-light: white;
   --text-color-light: #0d0d0d;
-  --toggle-bg-dark: #f5d76e;
+  --bg-color-dark: #0d0d0d;
+  --text-color-dark: white;
   --toggle-bg-light: #0d0d0d;
-  --toggle-handle-dark: white;
+  --toggle-bg-dark: #f5d76e;
   --toggle-handle-light: white;
+  --toggle-handle-dark: white;
 }
 
-body.light-mode {
-  background-color: var(--bg-color-light);
-  color: var(--text-color-light);
+body.dark-mode {
+  background-color: var(--bg-color-dark);
+  color: var(--text-color-dark);
 }
 
-body.light-mode header {
-  background-color: var(--bg-color-light);
+body.dark-mode header {
+  background-color: var(--bg-color-dark);
 }
 
-body.light-mode nav {
-  background: var(--bg-color-light);
-  border-top-color: #0d0d0d;
+body.dark-mode nav {
+  background: var(--bg-color-dark);
+  border-top-color: #f5d76e;
 }
 
-body.light-mode .text-section h1,
-body.light-mode .text-section h2,
-body.light-mode .highlight,
-body.light-mode nav a,
-body.light-mode header h1 {
-  color: #0d0d0d;
+body.dark-mode .text-section h1,
+body.dark-mode .text-section h2,
+body.dark-mode .highlight,
+body.dark-mode nav a,
+body.dark-mode header h1 {
+  color: #f5d76e;
+}
+
+body.dark-mode .avatar {
+  border-color: #f5d76e;
+  box-shadow: 0 0 30px #f5d76e44;
+}
+
+body.dark-mode .welcome-text {
+  color: #ffffff !important;
+}
+
+body.dark-mode .cursor {
+  background-color: #f5d76e;
 }
 
 #theme-toggle {
@@ -458,7 +457,7 @@ body.light-mode header h1 {
   width: 3.5rem;
   height: 2rem;
   border-radius: 1rem;
-  background-color: var(--toggle-bg-dark);
+  background-color: var(--toggle-bg-light);
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -470,19 +469,19 @@ body.light-mode header h1 {
 #toggle-icon {
   width: 1.5rem;
   height: 1.5rem;
-  background-color: var(--toggle-handle-dark);
+  background-color: var(--toggle-handle-light);
   border-radius: 50%;
   transition: transform 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-body.light-mode #theme-toggle {
-  background-color: var(--toggle-bg-light);
+body.dark-mode #theme-toggle {
+  background-color: var(--toggle-bg-dark);
 }
 
-body.light-mode #toggle-icon {
+body.dark-mode #toggle-icon {
   transform: translateX(1.5rem);
-  background-color: var(--toggle-handle-light);
+  background-color: var(--toggle-handle-dark);
 }
 
 @media (max-width: 768px) {
@@ -504,7 +503,7 @@ body.light-mode #toggle-icon {
   align-items: center;
   gap: 3rem;
   margin-bottom: 3rem;
-  background-color: #1D1C1C;
+  background-color: #f5f5f5;
   padding: 3rem;
   border-radius: 20px;
 }
@@ -522,11 +521,11 @@ body.light-mode #toggle-icon {
   font-weight: 600;
   flex-shrink: 0;
   overflow: hidden;
-  border: 4px solid #f5d76e;
-  box-shadow: 0 0 20px rgba(245, 215, 110, 0.3);
+  border: 4px solid #0d0d0d;
+  box-shadow: 0 0 20px rgba(13, 13, 13, 0.3);
   opacity: 0;
   transform: translateY(-50px);
-  animation: slideDownIntroAvatar 1s ease-out 0.3s forwards;
+  animation: slideDownIntroAvatar 0.8s ease-out 0.1s forwards;
 }
 
 .intro-avatar img {
@@ -562,14 +561,14 @@ body.light-mode #toggle-icon {
   flex: 1;
   opacity: 0;
   transform: translateX(50px);
-  animation: slideRightIntroText 1s ease-out 0.6s forwards;
+  animation: slideRightIntroText 0.8s ease-out 0.3s forwards;
 }
 
 .intro-text p {
   font-size: 1.2rem;
   line-height: 1.8;
   margin: 0;
-  color: white;
+  color: #0d0d0d;
 }
 
 .skills-section {
@@ -593,8 +592,8 @@ body.light-mode #toggle-icon {
 
 .skill-tab {
   background-color: transparent;
-  border: 2px solid #444;
-  color: #ccc;
+  border: 2px solid #ddd;
+  color: #666;
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
   cursor: pointer;
@@ -603,14 +602,14 @@ body.light-mode #toggle-icon {
 }
 
 .skill-tab.active {
-  background-color: #f5d76e;
-  color: #0d0d0d;
-  border-color: #f5d76e;
+  background-color: #0d0d0d;
+  color: white;
+  border-color: #0d0d0d;
 }
 
 .skill-tab:hover {
-  border-color: #f5d76e;
-  color: #f5d76e;
+  border-color: #0d0d0d;
+  color: #0d0d0d;
 }
 
 .skills-content {
@@ -626,8 +625,10 @@ body.light-mode #toggle-icon {
 }
 
 .skill-grid {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  justify-items: center;
   margin-bottom: 1.5rem;
 }
 
@@ -636,20 +637,21 @@ body.light-mode #toggle-icon {
 }
 
 .skill-card {
-  background-color: #1D1C1C;
+  background-color: #f5f5f5;
   padding: 1.5rem;
   border-radius: 12px;
-  border: 2px solid #333;
+  border: 2px solid #ddd;
   display: flex;
   align-items: center;
   gap: 1rem;
   transition: all 0.3s ease;
-  width: 300px;
-  max-width: 100%;
+  width: 100%;
+  max-width: 250px;
+  min-width: 200px;
 }
 
 .skill-card:hover {
-  border-color: #f5d76e;
+  border-color: #0d0d0d;
   transform: translateY(-2px);
 }
 
@@ -663,6 +665,7 @@ body.light-mode #toggle-icon {
   font-size: 0.8rem;
   font-weight: bold;
   color: white;
+  flex-shrink: 0;
 }
 
 .html-icon {
@@ -673,8 +676,8 @@ body.light-mode #toggle-icon {
   background-color: #1572b6;
 }
 
-.php-icon {
-  background-color: #777bb4;
+.cpp-icon {
+  background-color: #00599c;
 }
 
 .js-icon {
@@ -682,47 +685,79 @@ body.light-mode #toggle-icon {
   color: #000;
 }
 
+.python-icon {
+  background-color: #3776ab;
+}
+
+.github-icon {
+  background-color: #333;
+  color: white;
+}
+
+.sql-icon {
+  background-color: #336791;
+  color: white;
+}
+
 .skill-card span {
   font-size: 1.1rem;
   font-weight: 500;
+  color: #0d0d0d;
+  white-space: nowrap;
+}
+
+body.dark-mode .intro-content {
+  background-color: #1D1C1C;
+}
+
+body.dark-mode .intro-text p {
   color: white;
 }
 
-body.light-mode .intro-content {
-  background-color: #f5f5f5;
+body.dark-mode .intro-avatar {
+  border-color: #f5d76e;
+  box-shadow: 0 0 20px rgba(245, 215, 110, 0.3);
 }
 
-body.light-mode .intro-text p {
-  color: #0d0d0d;
+body.dark-mode .skill-card {
+  background-color: #1D1C1C;
+  border-color: #333;
 }
 
-body.light-mode .skill-card {
-  background-color: #f5f5f5;
-  border-color: #ddd;
+body.dark-mode .skill-card:hover {
+  border-color: #f5d76e;
 }
 
-body.light-mode .skill-card:hover {
-  border-color: #0d0d0d;
-}
-
-body.light-mode .skill-card span {
-  color: #0d0d0d;
-}
-
-body.light-mode .skill-tab {
-  border-color: #ddd;
-  color: #666;
-}
-
-body.light-mode .skill-tab:hover {
-  border-color: #0d0d0d;
-  color: #0d0d0d;
-}
-
-body.light-mode .skill-tab.active {
-  background-color: #0d0d0d;
+body.dark-mode .skill-card span {
   color: white;
-  border-color: #0d0d0d;
+}
+
+body.dark-mode .skill-tab {
+  border-color: #444;
+  color: #ccc;
+}
+
+body.dark-mode .skill-tab:hover {
+  border-color: #f5d76e;
+  color: #f5d76e;
+}
+
+body.dark-mode .skill-tab.active {
+  background-color: #f5d76e;
+  color: #0d0d0d;
+  border-color: #f5d76e;
+}
+
+@media (max-width: 1024px) {
+  .skill-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  
+  .skill-card {
+    max-width: 220px;
+    min-width: 180px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -765,7 +800,8 @@ body.light-mode .skill-tab.active {
   }
   
   .skill-grid {
-    justify-content: center;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
   
   .skills-tabs {
@@ -780,9 +816,8 @@ body.light-mode .skill-tab.active {
   }
   
   .skill-card {
-    width: 100%;
-    max-width: 280px;
-    margin: 0 auto;
+    max-width: 100%;
+    min-width: 160px;
   }
 }
 
@@ -807,8 +842,14 @@ body.light-mode .skill-tab.active {
     font-size: 1.3rem;
   }
   
+  .skill-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
   .skill-card {
-    max-width: 260px;
+    max-width: 100%;
+    min-width: 100%;
     padding: 1.2rem;
   }
 }

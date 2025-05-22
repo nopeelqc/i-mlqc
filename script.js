@@ -38,14 +38,16 @@ navLinks.forEach(link => {
 
 window.addEventListener('DOMContentLoaded', () => {
   const audio = document.querySelector('audio');
-  audio.volume = 0.5;
-  const playAudio = () => {
-    audio.play().catch(() => {});
-    window.removeEventListener('click', playAudio);
-    window.removeEventListener('keydown', playAudio);
-  };
-  window.addEventListener('click', playAudio);
-  window.addEventListener('keydown', playAudio);
+  if (audio) {
+    audio.volume = 0.5;
+    const playAudio = () => {
+      audio.play().catch(() => {});
+      window.removeEventListener('click', playAudio);
+      window.removeEventListener('keydown', playAudio);
+    };
+    window.addEventListener('click', playAudio);
+    window.addEventListener('keydown', playAudio);
+  }
 
   const logo = document.getElementById('logo');
   const goHomeMobile = document.getElementById('go-home-mobile');
@@ -62,13 +64,52 @@ window.addEventListener('DOMContentLoaded', () => {
       homeLink.click();
     });
   }
+
+  const typingElement = document.querySelector('.typing');
+  if (typingElement) {
+    const originalText = typingElement.textContent;
+    let currentText = '';
+    let isDeleting = false;
+    let typeSpeed = 100;
+    let deleteSpeed = 50;
+    let pauseTime = 2000;
+
+    function typeWriter() {
+      if (!isDeleting) {
+        if (currentText.length < originalText.length) {
+          currentText = originalText.substring(0, currentText.length + 1);
+          typingElement.innerHTML = currentText + '<span class="cursor">|</span>';
+          setTimeout(typeWriter, typeSpeed);
+        } else {
+          setTimeout(() => {
+            isDeleting = true;
+            typeWriter();
+          }, pauseTime);
+        }
+      } else {
+        if (currentText.length > 0) {
+          currentText = currentText.substring(0, currentText.length - 1);
+          typingElement.innerHTML = currentText + '<span class="cursor">|</span>';
+          setTimeout(typeWriter, deleteSpeed);
+        } else {
+          isDeleting = false;
+          setTimeout(typeWriter, 500);
+        }
+      }
+    }
+
+    typingElement.innerHTML = '<span class="cursor">|</span>';
+    setTimeout(typeWriter, 1000);
+  }
 });
 
 const themeToggle = document.getElementById('theme-toggle');
 
-themeToggle.addEventListener('click', () => {
-  document.body.classList.toggle('light-mode');
-});
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+  });
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   const skillTabs = document.querySelectorAll('.skill-tab');
@@ -82,7 +123,10 @@ document.addEventListener('DOMContentLoaded', () => {
       skillContents.forEach(c => c.classList.remove('active'));
       
       tab.classList.add('active');
-      document.getElementById(targetTab).classList.add('active');
+      const targetContent = document.getElementById(targetTab);
+      if (targetContent) {
+        targetContent.classList.add('active');
+      }
     });
   });
 });
