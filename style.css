@@ -964,7 +964,6 @@ body.dark-mode .skill-tab.active {
   border-radius: 15px;
 }
 
-/* THÊM ĐOẠN NÀY VÀO */
 .project-card.overlay-visible .project-overlay {
   opacity: 1;
   visibility: visible;
@@ -1023,7 +1022,6 @@ body.dark-mode .skill-tab.active {
   color: white;
 }
 
-/* Dark Mode for Projects */
 body.dark-mode .projects-container h2 {
   color: #f5d76e;
 }
@@ -1078,7 +1076,6 @@ body.dark-mode .web-link:hover {
   color: white;
 }
 
-/* Responsive Design for Projects */
 @media (max-width: 1024px) {
   .projects-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1188,51 +1185,28 @@ body.dark-mode .web-link:hover {
   padding-top: 1rem;
 }
 
-
-/* =================================================================== */
-/* == MÃ BỔ SUNG: SỬA LỖI CÁC Ô BỊ TO VÀ MẤT GÓC TRÊN ĐIỆN THOẠI == */
-/* =================================================================== */
-
-/* Áp dụng cho màn hình điện thoại hẹp (chiều rộng tối đa 480px) */
 @media (max-width: 480px) {
-
-  /* --- 1. Tinh chỉnh chung cho các container --- */
   .intro-container,
   .projects-container {
-    /* Giảm bớt khoảng đệm ngang để có thêm không gian cho nội dung */
     padding-left: 0.75rem;
     padding-right: 0.75rem;
   }
 
-  /* --- 2. Tinh chỉnh cho các thẻ Skills trong mục "Giới Thiệu" --- */
   #gioi-thieu .skill-grid {
-    /* Chuyển sang hiển thị 1 cột duy nhất trên màn hình rất nhỏ */
     grid-template-columns: 1fr;
   }
 
   #gioi-thieu .skill-card {
-    /* Cho phép thẻ co dãn hoàn toàn theo chiều rộng của cột */
     min-width: unset;
     max-width: 100%;
   }
 
-  /* --- 3. Tinh chỉnh cho các thẻ trong mục "Dự Án" --- */
   #du-an .project-card {
-     /* Đảm bảo thẻ dự án không bị cứng chiều rộng */
     width: 100%;
   }
 }
 
-/* =================================================================== */
-/* == MÃ BỔ SUNG CUỐI CÙNG: FIX LỖI BOX-MODEL TRÊN THIẾT BỊ DI ĐỘNG == */
-/* =================================================================== */
-
-/* Áp dụng cho máy tính bảng và điện thoại (màn hình rộng tối đa 1024px) */
 @media (max-width: 1024px) {
-  
-  /* Đây là quy tắc quan trọng nhất.
-    Nó thay đổi cách tính toán kích thước hộp để padding và border không làm tràn phần tử.
-  */
   .container,
   .section,
   .intro-container,
@@ -1244,62 +1218,42 @@ body.dark-mode .web-link:hover {
     box-sizing: border-box;
   }
 
-  /*
-    Thay thế width: 100vw bằng 100% để tránh lỗi tràn lề do thanh cuộn.
-  */
   .container {
     width: 100%;
   }
 }
 
-/* Tinh chỉnh thêm cho màn hình điện thoại rất hẹp để đảm bảo không có gì bị chèn ép.
-*/
 @media (max-width: 480px) {
   .intro-content {
-    /* Giảm nhẹ padding trên điện thoại nhỏ */
     padding: 1.5rem 1rem;
     margin-left: 0;
     margin-right: 0;
   }
 }
 
-/* =================================================================== */
-/* == MÃ HIỆU ỨNG CUỐI CÙNG: PHÓNG TO TỪ NHỎ (SCALE UP) == */
-/* =================================================================== */
-
-/* --- 1. Định nghĩa Keyframe cho hiệu ứng phóng to --- */
 @keyframes scaleUpAppear {
   from {
-    /* Bắt đầu với trạng thái thu nhỏ 50% và mờ hoàn toàn */
     transform: scale(0.5);
     opacity: 0;
   }
   to {
-    /* Kết thúc ở trạng thái kích thước thật và hiện rõ */
     transform: scale(1);
     opacity: 1;
   }
 }
 
-/* --- 2. Thiết lập trạng thái ban đầu CHỈ cho thẻ dự án --- */
-/* Đảm bảo thẻ bị ẩn và thu nhỏ trước khi animation bắt đầu */
 #du-an .project-card {
   opacity: 0;
   transform: scale(0.5);
 }
 
-/* --- 3. Kích hoạt hiệu ứng CHỈ khi section DỰ ÁN active --- */
-/* Áp dụng animation 'scaleUpAppear' cho các thẻ dự án */
 #du-an.section.active .project-card {
   animation-name: scaleUpAppear;
   animation-duration: 0.5s;
-  /* Sử dụng timing function để hiệu ứng mượt mà hơn ở cuối */
   animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   animation-fill-mode: forwards;
 }
 
-/* --- 4. Tạo hiệu ứng xuất hiện lần lượt (Stagger) --- */
-/* Giữ nguyên phần này để các thẻ xuất hiện nối đuôi nhau */
 #du-an.section.active .project-card:nth-child(1) {
   animation-delay: 0.1s;
 }
@@ -1316,27 +1270,20 @@ body.dark-mode .web-link:hover {
   animation-delay: 0.4s;
 }
 
-/* =================================================================== */
-/* == MÃ BỔ SUNG: NÚT BẬT/TẮT NHẠC == */
-/* =================================================================== */
-
-/* Container chung cho các nút điều khiển */
 .top-right-controls {
   position: fixed;
   top: 1rem;
   right: 1rem;
   z-index: 1000;
   display: flex;
-  gap: 0.75rem; /* Khoảng cách giữa 2 nút */
+  gap: 0.75rem;
   align-items: center;
 }
 
-/* Di chuyển position:fixed từ nút con ra container cha */
 #theme-toggle {
-  position: static; /* Bỏ position fixed cũ */
+  position: static;
 }
 
-/* Style cho nút bật/tắt nhạc */
 #music-toggle {
   width: 3.5rem;
   height: 2rem;
@@ -1355,7 +1302,6 @@ body.dark-mode #music-toggle {
   color: var(--toggle-handle-dark);
 }
 
-/* Quy tắc ẩn/hiện icon dựa trên trạng thái */
 #music-toggle.music-on .icon-music-on {
   display: block;
 }

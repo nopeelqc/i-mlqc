@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // --- KHỞI TẠO CÁC BIẾN CẦN THIẾT ---
   const navLinks = document.querySelectorAll('nav a');
   const sections = document.querySelectorAll('.section');
   const logo = document.getElementById('logo');
@@ -14,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const musicToggle = document.getElementById('music-toggle');
   let isTransitioning = false;
 
-  // --- LOGIC CHUYỂN SECTION KHI CLICK NAV LINK ---
   navLinks.forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
@@ -44,9 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- LOGIC NÚT BẬT/TẮT NHẠC ---
   if (audio && musicToggle) {
-    audio.volume = 0.5;
+    audio.volume = 0;
     const updateMusicIcon = () => {
       if (audio.paused) {
         musicToggle.classList.remove('music-on');
@@ -68,7 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
     updateMusicIcon();
   }
 
-  // --- LOGIC CLICK LOGO ĐỂ VỀ TRANG CHỦ ---
   if (logo && homeLink) {
     logo.addEventListener('click', () => homeLink.click());
   }
@@ -76,7 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
     goHomeMobile.addEventListener('click', () => homeLink.click());
   }
 
-  // --- LOGIC HIỆU ỨNG GÕ CHỮ ---
   if (typingElement) {
     const originalText = typingElement.textContent;
     let currentText = '';
@@ -98,14 +93,12 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(typeWriter, 1000);
   }
 
-  // --- LOGIC NÚT CHUYỂN CHẾ ĐỘ SÁNG/TỐI ---
   if (themeToggle) {
     themeToggle.addEventListener('click', () => {
       document.body.classList.toggle('dark-mode');
     });
   }
 
-  // --- LOGIC CHUYỂN TAB TRONG MỤC GIỚI THIỆU ---
   skillTabs.forEach(tab => {
     tab.addEventListener('click', () => {
       const targetTab = tab.getAttribute('data-tab');
@@ -119,7 +112,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- LOGIC BẬT/TẮT OVERLAY CHO DỰ ÁN ---
   projectCards.forEach(card => {
     card.addEventListener('click', (event) => {
       if (event.target.closest('.link-btn')) return;
