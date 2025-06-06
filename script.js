@@ -1,127 +1,116 @@
-const navLinks = document.querySelectorAll('nav a');
-const sections = document.querySelectorAll('.section');
-let isTransitioning = false;
-
-navLinks.forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    if (isTransitioning) return;
-    isTransitioning = true;
-    const targetSectionId = link.getAttribute('data-section');
-    if (!targetSectionId) {
-      isTransitioning = false;
-      return;
-    }
-    navLinks.forEach(l => l.classList.remove('active'));
-    link.classList.add('active');
-    const currentSection = document.querySelector('.section.active');
-    const targetSection = document.getElementById(targetSectionId);
-    if (!targetSection || currentSection === targetSection) {
-      isTransitioning = false;
-      return;
-    }
-    currentSection.style.opacity = 0;
-    setTimeout(() => {
-      currentSection.classList.remove('active');
-      currentSection.style.display = 'none';
-      targetSection.style.display = 'flex';
-      targetSection.classList.add('active');
-      requestAnimationFrame(() => {
-        targetSection.style.opacity = 1;
-      });
-      setTimeout(() => {
-        isTransitioning = false;
-      }, 1);
-    }, 1);
-  });
-});
-
-window.addEventListener('DOMContentLoaded', () => {
-  const audio = document.querySelector('audio');
-  if (audio) {
-    audio.volume = 0.5;
-    const playAudio = () => {
-      audio.play().catch(() => {});
-      window.removeEventListener('click', playAudio);
-      window.removeEventListener('keydown', playAudio);
-    };
-    window.addEventListener('click', playAudio);
-    window.addEventListener('keydown', playAudio);
-  }
-
+document.addEventListener('DOMContentLoaded', () => {
+  // --- KHỞI TẠO CÁC BIẾN CẦN THIẾT ---
+  const navLinks = document.querySelectorAll('nav a');
+  const sections = document.querySelectorAll('.section');
   const logo = document.getElementById('logo');
   const goHomeMobile = document.getElementById('go-home-mobile');
   const homeLink = document.querySelector('nav a[data-section="home"]');
-
-  if (logo && homeLink) {
-    logo.addEventListener('click', () => {
-      homeLink.click();
-    });
-  }
-
-  if (goHomeMobile && homeLink) {
-    goHomeMobile.addEventListener('click', () => {
-      homeLink.click();
-    });
-  }
-
   const typingElement = document.querySelector('.typing');
+  const themeToggle = document.getElementById('theme-toggle');
+  const skillTabs = document.querySelectorAll('.skill-tab');
+  const skillContents = document.querySelectorAll('.skill-content');
+  const projectCards = document.querySelectorAll('.project-card');
+  const audio = document.querySelector('audio');
+  const musicToggle = document.getElementById('music-toggle');
+  let isTransitioning = false;
+
+  // --- LOGIC CHUYỂN SECTION KHI CLICK NAV LINK ---
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      if (isTransitioning) return;
+      
+      const targetSectionId = link.getAttribute('data-section');
+      const targetSection = document.getElementById(targetSectionId);
+      const currentSection = document.querySelector('.section.active');
+
+      if (!targetSection || currentSection === targetSection) return;
+
+      isTransitioning = true;
+      navLinks.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+      currentSection.style.opacity = 0;
+
+      setTimeout(() => {
+        currentSection.classList.remove('active');
+        currentSection.style.display = 'none';
+        targetSection.style.display = 'flex';
+        targetSection.classList.add('active');
+        requestAnimationFrame(() => {
+          targetSection.style.opacity = 1;
+        });
+        setTimeout(() => { isTransitioning = false; }, 300);
+      }, 300);
+    });
+  });
+
+  // --- LOGIC NÚT BẬT/TẮT NHẠC ---
+  if (audio && musicToggle) {
+    audio.volume = 0.5;
+    const updateMusicIcon = () => {
+      if (audio.paused) {
+        musicToggle.classList.remove('music-on');
+        musicToggle.classList.add('music-off');
+      } else {
+        musicToggle.classList.remove('music-off');
+        musicToggle.classList.add('music-on');
+      }
+    };
+    musicToggle.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play().catch(e => console.error("Không thể bật nhạc:", e));
+      } else {
+        audio.pause();
+      }
+    });
+    audio.onplay = updateMusicIcon;
+    audio.onpause = updateMusicIcon;
+    updateMusicIcon();
+  }
+
+  // --- LOGIC CLICK LOGO ĐỂ VỀ TRANG CHỦ ---
+  if (logo && homeLink) {
+    logo.addEventListener('click', () => homeLink.click());
+  }
+  if (goHomeMobile && homeLink) {
+    goHomeMobile.addEventListener('click', () => homeLink.click());
+  }
+
+  // --- LOGIC HIỆU ỨNG GÕ CHỮ ---
   if (typingElement) {
     const originalText = typingElement.textContent;
     let currentText = '';
     let isDeleting = false;
-    let typeSpeed = 100;
-    let deleteSpeed = 50;
-    let pauseTime = 2000;
-
+    const typeSpeed = 100, deleteSpeed = 50, pauseTime = 2000;
     function typeWriter() {
-      if (!isDeleting) {
-        if (currentText.length < originalText.length) {
-          currentText = originalText.substring(0, currentText.length + 1);
-          typingElement.innerHTML = currentText + '<span class="cursor">|</span>';
-          setTimeout(typeWriter, typeSpeed);
-        } else {
-          setTimeout(() => {
-            isDeleting = true;
-            typeWriter();
-          }, pauseTime);
-        }
+      const fullText = isDeleting ? currentText.slice(0, -1) : originalText.slice(0, currentText.length + 1);
+      currentText = fullText;
+      typingElement.innerHTML = currentText + '<span class="cursor">|</span>';
+      if (!isDeleting && currentText === originalText) {
+        setTimeout(() => { isDeleting = true; typeWriter(); }, pauseTime);
+      } else if (isDeleting && currentText === '') {
+        isDeleting = false;
+        setTimeout(typeWriter, 500);
       } else {
-        if (currentText.length > 0) {
-          currentText = currentText.substring(0, currentText.length - 1);
-          typingElement.innerHTML = currentText + '<span class="cursor">|</span>';
-          setTimeout(typeWriter, deleteSpeed);
-        } else {
-          isDeleting = false;
-          setTimeout(typeWriter, 500);
-        }
+        setTimeout(typeWriter, isDeleting ? deleteSpeed : typeSpeed);
       }
     }
-
-    typingElement.innerHTML = '<span class="cursor">|</span>';
     setTimeout(typeWriter, 1000);
   }
-});
 
-const themeToggle = document.getElementById('theme-toggle');
+  // --- LOGIC NÚT CHUYỂN CHẾ ĐỘ SÁNG/TỐI ---
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+    });
+  }
 
-if (themeToggle) {
-  themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-  });
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  const skillTabs = document.querySelectorAll('.skill-tab');
-  const skillContents = document.querySelectorAll('.skill-content');
-  
+  // --- LOGIC CHUYỂN TAB TRONG MỤC GIỚI THIỆU ---
   skillTabs.forEach(tab => {
     tab.addEventListener('click', () => {
       const targetTab = tab.getAttribute('data-tab');
-    
       skillTabs.forEach(t => t.classList.remove('active'));
       skillContents.forEach(c => c.classList.remove('active'));
-      
       tab.classList.add('active');
       const targetContent = document.getElementById(targetTab);
       if (targetContent) {
@@ -129,4 +118,13 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // --- LOGIC BẬT/TẮT OVERLAY CHO DỰ ÁN ---
+  projectCards.forEach(card => {
+    card.addEventListener('click', (event) => {
+      if (event.target.closest('.link-btn')) return;
+      card.classList.toggle('overlay-visible');
+    });
+  });
+
 });

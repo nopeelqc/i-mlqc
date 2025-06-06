@@ -853,3 +853,519 @@ body.dark-mode .skill-tab.active {
     padding: 1.2rem;
   }
 }
+
+.projects-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.projects-container h2 {
+  color: #f5d76e;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  border-bottom: 3px solid #f5d76e;
+  padding-bottom: 1rem;
+  display: inline-block;
+  width: 100%;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  justify-items: center;
+}
+
+.project-card {
+  background-color: #f5f5f5;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  max-width: 350px;
+  width: 100%;
+  border: 2px solid #ddd;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border-color: #f5d76e;
+}
+
+.project-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.05);
+}
+
+.project-info {
+  padding: 1.5rem;
+}
+
+.project-info h3 {
+  color: #0d0d0d;
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+}
+
+.project-info p {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tech-tag {
+  background-color: #f5d76e;
+  color: #0d0d0d;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(13, 13, 13, 0.95);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  border-radius: 15px;
+}
+
+/* THÊM ĐOẠN NÀY VÀO */
+.project-card.overlay-visible .project-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+.overlay-content {
+  text-align: center;
+  padding: 2rem;
+}
+
+.project-status {
+  margin-bottom: 2rem;
+}
+
+.project-status p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  color: #f5d76e;
+}
+
+.project-status strong {
+  color: white;
+}
+
+.project-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.link-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background-color: #f5d76e;
+  color: #0d0d0d;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.link-btn:hover {
+  background-color: white;
+  transform: scale(1.1);
+}
+
+.github-link:hover {
+  background-color: #333;
+  color: white;
+}
+
+.web-link:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* Dark Mode for Projects */
+body.dark-mode .projects-container h2 {
+  color: #f5d76e;
+}
+
+body.dark-mode .project-card {
+  background-color: #1D1C1C;
+  border-color: #333;
+}
+
+body.dark-mode .project-card:hover {
+  border-color: #f5d76e;
+}
+
+body.dark-mode .project-info h3 {
+  color: #f5d76e;
+}
+
+body.dark-mode .project-info p {
+  color: #ccc;
+}
+
+body.dark-mode .project-overlay {
+  background-color: rgba(245, 215, 110, 0.95);
+  color: #0d0d0d;
+}
+
+body.dark-mode .project-status strong {
+  color: #0d0d0d;
+}
+
+body.dark-mode .project-status p {
+  color: #0d0d0d;
+}
+
+body.dark-mode .link-btn {
+  background-color: #0d0d0d;
+  color: #f5d76e;
+}
+
+body.dark-mode .link-btn:hover {
+  background-color: #f5d76e;
+  color: #0d0d0d;
+}
+
+body.dark-mode .github-link:hover {
+  background-color: #333;
+  color: white;
+}
+
+body.dark-mode .web-link:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* Responsive Design for Projects */
+@media (max-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .project-card {
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-container {
+    padding: 1.5rem 1rem;
+  }
+  
+  .projects-container h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .project-card {
+    max-width: 100%;
+  }
+  
+  .project-info {
+    padding: 1.2rem;
+  }
+  
+  .project-info h3 {
+    font-size: 1.2rem;
+  }
+  
+  .project-info p {
+    font-size: 0.9rem;
+  }
+  
+  .overlay-content {
+    padding: 1.5rem;
+  }
+  
+  .project-status p {
+    font-size: 0.9rem;
+  }
+  
+  .project-links {
+    gap: 1.5rem;
+  }
+  
+  .link-btn {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-container {
+    padding: 1rem 0.5rem;
+  }
+  
+  .projects-container h2 {
+    font-size: 1.8rem;
+  }
+  
+  .project-info {
+    padding: 1rem;
+  }
+  
+  .project-info h3 {
+    font-size: 1.1rem;
+  }
+  
+  .project-info p {
+    font-size: 0.85rem;
+  }
+  
+  .tech-tag {
+    padding: 0.25rem 0.6rem;
+    font-size: 0.75rem;
+  }
+  
+  .overlay-content {
+    padding: 1rem;
+  }
+  
+  .project-status p {
+    font-size: 0.85rem;
+    margin: 0.3rem 0;
+  }
+  
+  .link-btn {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+#du-an .projects-container h2 {
+  display: none;
+}
+
+#du-an .projects-container {
+  padding-top: 1rem;
+}
+
+
+/* =================================================================== */
+/* == MÃ BỔ SUNG: SỬA LỖI CÁC Ô BỊ TO VÀ MẤT GÓC TRÊN ĐIỆN THOẠI == */
+/* =================================================================== */
+
+/* Áp dụng cho màn hình điện thoại hẹp (chiều rộng tối đa 480px) */
+@media (max-width: 480px) {
+
+  /* --- 1. Tinh chỉnh chung cho các container --- */
+  .intro-container,
+  .projects-container {
+    /* Giảm bớt khoảng đệm ngang để có thêm không gian cho nội dung */
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  /* --- 2. Tinh chỉnh cho các thẻ Skills trong mục "Giới Thiệu" --- */
+  #gioi-thieu .skill-grid {
+    /* Chuyển sang hiển thị 1 cột duy nhất trên màn hình rất nhỏ */
+    grid-template-columns: 1fr;
+  }
+
+  #gioi-thieu .skill-card {
+    /* Cho phép thẻ co dãn hoàn toàn theo chiều rộng của cột */
+    min-width: unset;
+    max-width: 100%;
+  }
+
+  /* --- 3. Tinh chỉnh cho các thẻ trong mục "Dự Án" --- */
+  #du-an .project-card {
+     /* Đảm bảo thẻ dự án không bị cứng chiều rộng */
+    width: 100%;
+  }
+}
+
+/* =================================================================== */
+/* == MÃ BỔ SUNG CUỐI CÙNG: FIX LỖI BOX-MODEL TRÊN THIẾT BỊ DI ĐỘNG == */
+/* =================================================================== */
+
+/* Áp dụng cho máy tính bảng và điện thoại (màn hình rộng tối đa 1024px) */
+@media (max-width: 1024px) {
+  
+  /* Đây là quy tắc quan trọng nhất.
+    Nó thay đổi cách tính toán kích thước hộp để padding và border không làm tràn phần tử.
+  */
+  .container,
+  .section,
+  .intro-container,
+  .intro-content,
+  .skills-section,
+  .skill-card,
+  .projects-container,
+  .project-card {
+    box-sizing: border-box;
+  }
+
+  /*
+    Thay thế width: 100vw bằng 100% để tránh lỗi tràn lề do thanh cuộn.
+  */
+  .container {
+    width: 100%;
+  }
+}
+
+/* Tinh chỉnh thêm cho màn hình điện thoại rất hẹp để đảm bảo không có gì bị chèn ép.
+*/
+@media (max-width: 480px) {
+  .intro-content {
+    /* Giảm nhẹ padding trên điện thoại nhỏ */
+    padding: 1.5rem 1rem;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+/* =================================================================== */
+/* == MÃ HIỆU ỨNG CUỐI CÙNG: PHÓNG TO TỪ NHỎ (SCALE UP) == */
+/* =================================================================== */
+
+/* --- 1. Định nghĩa Keyframe cho hiệu ứng phóng to --- */
+@keyframes scaleUpAppear {
+  from {
+    /* Bắt đầu với trạng thái thu nhỏ 50% và mờ hoàn toàn */
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    /* Kết thúc ở trạng thái kích thước thật và hiện rõ */
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* --- 2. Thiết lập trạng thái ban đầu CHỈ cho thẻ dự án --- */
+/* Đảm bảo thẻ bị ẩn và thu nhỏ trước khi animation bắt đầu */
+#du-an .project-card {
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+/* --- 3. Kích hoạt hiệu ứng CHỈ khi section DỰ ÁN active --- */
+/* Áp dụng animation 'scaleUpAppear' cho các thẻ dự án */
+#du-an.section.active .project-card {
+  animation-name: scaleUpAppear;
+  animation-duration: 0.5s;
+  /* Sử dụng timing function để hiệu ứng mượt mà hơn ở cuối */
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation-fill-mode: forwards;
+}
+
+/* --- 4. Tạo hiệu ứng xuất hiện lần lượt (Stagger) --- */
+/* Giữ nguyên phần này để các thẻ xuất hiện nối đuôi nhau */
+#du-an.section.active .project-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+#du-an.section.active .project-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+#du-an.section.active .project-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+#du-an.section.active .project-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+/* =================================================================== */
+/* == MÃ BỔ SUNG: NÚT BẬT/TẮT NHẠC == */
+/* =================================================================== */
+
+/* Container chung cho các nút điều khiển */
+.top-right-controls {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  display: flex;
+  gap: 0.75rem; /* Khoảng cách giữa 2 nút */
+  align-items: center;
+}
+
+/* Di chuyển position:fixed từ nút con ra container cha */
+#theme-toggle {
+  position: static; /* Bỏ position fixed cũ */
+}
+
+/* Style cho nút bật/tắt nhạc */
+#music-toggle {
+  width: 3.5rem;
+  height: 2rem;
+  border-radius: 1rem;
+  background-color: var(--toggle-bg-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  color: var(--toggle-handle-light);
+}
+
+body.dark-mode #music-toggle {
+  background-color: var(--toggle-bg-dark);
+  color: var(--toggle-handle-dark);
+}
+
+/* Quy tắc ẩn/hiện icon dựa trên trạng thái */
+#music-toggle.music-on .icon-music-on {
+  display: block;
+}
+#music-toggle.music-on .icon-music-off {
+  display: none;
+}
+
+#music-toggle.music-off .icon-music-on {
+  display: none;
+}
+#music-toggle.music-off .icon-music-off {
+  display: block;
+}
