@@ -12,7 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const audio = document.querySelector('audio');
   const musicToggle = document.getElementById('music-toggle');
   let isTransitioning = false;
-
+  document.addEventListener('click', () => {
+    if (audio && audio.paused) {
+      audio.play().catch(e => console.error("Không thể bật nhạc:", e));
+    }
+  }, { once: true });
   navLinks.forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
@@ -43,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   if (audio && musicToggle) {
-    audio.volume = 0;
+    audio.volume = 1;
     const updateMusicIcon = () => {
       if (audio.paused) {
         musicToggle.classList.remove('music-on');
