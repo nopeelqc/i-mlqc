@@ -699,6 +699,20 @@ body.dark-mode #toggle-icon {
   color: white;
 }
 
+.csharp-icon {
+  background-color: #68217a;
+}
+
+.nodejs-icon {
+  background-color: #68a063;
+  color: white;
+}
+
+.unity-icon {
+  background-color: #000000;
+  color: white;
+}
+
 .skill-card span {
   font-size: 1.1rem;
   font-weight: 500;
@@ -1314,4 +1328,90 @@ body.dark-mode #music-toggle {
 }
 #music-toggle.music-off .icon-music-off {
   display: block;
+}
+
+.contact-container {
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+  padding: 2rem;
+  animation: scaleUpAppear 0.5s ease-out forwards;
+}
+
+.contact-container h2 {
+  color: #f5d76e;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.contact-container p {
+  font-size: 1.2rem;
+  margin-bottom: 2.5rem;
+  color: #ccc;
+}
+
+body:not(.dark-mode) .contact-container p {
+    color: #666;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  color: white;
+  padding: 12px;
+}
+
+.social-link svg {
+    width: 100%;
+    height: 100%;
+}
+
+.social-link.facebook {
+    background-color: #1877F2;
+}
+.social-link.tiktok {
+    background-color: #000000;
+}
+.social-link.instagram {
+    background: #d6249f;
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+.social-link.github {
+    background-color: #333;
+}
+
+.social-link:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+#lien-ket.section.active .contact-container {
+    animation-name: scaleUpAppear;
+    animation-duration: 0.5s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation-fill-mode: forwards;
+}
+
+@media (max-width: 480px) {
+    .social-links {
+        gap: 1.5rem;
+    }
+    .social-link {
+        width: 50px;
+        height: 50px;
+        padding: 10px;
+    }
 }
