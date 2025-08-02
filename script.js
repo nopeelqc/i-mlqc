@@ -12,11 +12,26 @@ document.addEventListener('DOMContentLoaded', () => {
   const audio = document.querySelector('audio');
   const musicToggle = document.getElementById('music-toggle');
   let isTransitioning = false;
+
+  const playlist = ['sound.mp3' , 'nhac.mp3']; 
+  let currentTrackIndex = 0;
+  audio.src = playlist[currentTrackIndex];
+  audio.addEventListener('ended', () => {
+    currentTrackIndex++;
+    if (currentTrackIndex >= playlist.length) {
+      currentTrackIndex = 0;
+    }
+    audio.src = playlist[currentTrackIndex];
+    audio.load();
+    audio.play();
+  });
+
   document.addEventListener('click', () => {
     if (audio && audio.paused) {
       audio.play().catch(e => console.error("Không thể bật nhạc:", e));
     }
   }, { once: true });
+  
   navLinks.forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
